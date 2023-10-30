@@ -1,0 +1,3 @@
+time,latitude,longitude,depth,mag,magType,nst,gap,dmin,rms,net,id,updated,place,type,horizontalError,depthError,magError,magNst,status,locationSource,magSource
+2014-01-01T16:03:29.000Z,-13.8633,167.249,187,6.5,mww,,14,3.997,0.76,us,usc000lvb5,2022-05-03T16:43:00.609Z,"32 km W of Sola, Vanuatu",earthquake,,1.7,,,reviewed,us,us
+2014-01-01T00:01:16.610Z,19.0868,120.2389,10.07,5.1,mb,,29,3.794,0.85,us,usc000lv5e,2014-03-07T00:25:53.000Z,"76 km NNW of Davila, Philippines",earthquake,,2.4,0.048,143,reviewed,us,us

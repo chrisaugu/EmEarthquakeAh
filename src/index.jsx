@@ -6,7 +6,8 @@ import App from './App';
 
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.createRoot(document.getElementById('app')).render(
+const root = ReactDOM.createRoot(document.getElementById('app'))
+root.render(
   <React.StrictMode>
     <BrowserRouter>
       <App />

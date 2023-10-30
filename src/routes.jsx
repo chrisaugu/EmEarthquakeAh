@@ -24,16 +24,6 @@ const Routes = () => (
 	</Router>
 );
 
-// function Home() {
-//   return (
-//     <p>
-//       A <code>&lt;Switch></code> renders the first child <code>&lt;Route></code>{" "}
-//       that matches. A <code>&lt;Route></code> with no <code>path</code> always
-//       matches.
-//     </p>
-//   );
-// }
-
 function WillMatch() {
 	return <h3>Matched!</h3>;
 }

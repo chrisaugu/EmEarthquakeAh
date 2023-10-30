@@ -1,96 +1,34 @@
-import Head from 'next/head';
-import styles from '../styles/Home.module.css';
-
+import React from "react";
+import {Routes, Route, Link} from "react-router-dom";
+import { Page, PageContent, PageHeader,
+  Text,
+  Paragraph,
+  Heading,
+  Button,
+  Box,
+  Grid,
+  Anchor,
+} from 'grommet';
 import TheFooter from "../components/TheFooter";
+import ContentContainer from "../components/ContentContainer";
 
 export default function About() {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <>
+      <Page pad="medium">
+        <PageContent>
+          <PageHeader
+            title="About"
+            subtitle="A subtitle for the page."
+          />
 
-      <main>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org"> EmEarthquakeAh</a>
-        </h1>
+          <ContentContainer>
+          <Heading>What is EmEarthquakeAh?</Heading>
+          <Paragraph>EmEarthquakeAh is a play on words for "Em Earthquake Ah?", a rather phrasal question used when someone felt a shake.</Paragraph>
+          </ContentContainer>
+        </PageContent>
 
-        <p className={styles.description}>
-          This is a project
-        </p>
-
-        
-      </main>
-
-      <TheFooter/>
-
-      <style jsx>{`
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-        footer {
-          width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        footer img {
-          margin-left: 0.5rem;
-        }
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          text-decoration: none;
-          color: inherit;
-        }
-        code {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          font-size: 1.1rem;
-          font-family:
-            Menlo,
-            Monaco,
-            Lucida Console,
-            Liberation Mono,
-            DejaVu Sans Mono,
-            Bitstream Vera Sans Mono,
-            Courier New,
-            monospace;
-        }
-      `}</style>
-
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family:
-            -apple-system,
-            BlinkMacSystemFont,
-            Segoe UI,
-            Roboto,
-            Oxygen,
-            Ubuntu,
-            Cantarell,
-            Fira Sans,
-            Droid Sans,
-            Helvetica Neue,
-            sans-serif;
-        }
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
-    </div>
+      </Page>
+    </>
   );
 }

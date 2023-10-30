@@ -15,26 +15,32 @@ import {
 	PageHeader,
 	Paragraph,
 	Text,
+	TextInput,
 } from "grommet";
+import { Phone } from "grommet-icons";
 
-const CardTemplate = ({ title }) => {
+const SubscribeCard = () => {
   return (
-    <Card>
+    <Card background="background-front">
       <CardHeader pad="medium">
         <Heading level={2} margin="none">
-          {title}
+          Receive alerts
         </Heading>
       </CardHeader>
       <CardBody pad="medium">
         <Paragraph>
-          Mauris ut imperdiet libero.
+          Want to receive alerts of Earthquakes?
         </Paragraph>
+
+        <Grid columns="medium" gap="large" pad={{ bottom: "large" }}>
+					<TextInput icon={<Phone />} placeholder="000-000-00" />
+
+					<Button primary label="Subscribe"/>
+        </Grid>
+
       </CardBody>
-      <CardFooter pad="medium" background="background-contrast">
-        Footer
-      </CardFooter>
     </Card>
   );
 };
 
-export default CardTemplate;
+export default SubscribeCard;
