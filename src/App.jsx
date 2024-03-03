@@ -17,7 +17,7 @@ import { hpe } from 'grommet-theme-hpe';
 
 import './App.css';
 import logo from "./assets/vercel.svg";
-import { Context } from './libs/AppContext';
+import AppProvider, { AppContext } from './libs/AppContext';
 import CardTemplate from "./components/CardTemplate";
 import TheFooter from "./components/TheFooter";
 import TheHeader from "./components/TheHeader";
@@ -27,12 +27,10 @@ import About from "./pages/about";
 import { theme, hpeLeaflet, generic } from "./themes";
 
 function MyApp() {
-  const [dark, setDark] = useState(false);
-  {/*<Context.Consumer>*/}
-    
   return (
-      <Grommet hpe={hpe} theme={generic} background="background-back" full themeMode={dark ? "dark" : "light"}>
-        <TheHeader setTheme={setDark} theme={dark}/>
+    <AppProvider>
+      <Grommet hpe={hpe} theme={generic} background="background-back" full themeMode={dark}>
+        <TheHeader/>
         {/*<Header background="brand">
           <Button icon={<Icons.Home />} hoverIndicator />
           <Menu label="account" items={[{ label: 'logout' }]} />
@@ -89,9 +87,8 @@ function MyApp() {
           <TheFooter/>
 
       </Grommet>
+  </AppProvider>
   );
-
-  {/*</Context.Consumer>*/}
 }
 
 export default MyApp;

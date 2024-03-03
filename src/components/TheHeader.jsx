@@ -5,6 +5,7 @@ import * as Icons from "grommet-icons";
 import { Sun, Moon } from "grommet-icons";
 
 import styles from "../styles/Home.module.css";
+import { useTheme } from '../libs/AppContext';
 
 const AppBar = (props) => (
   <>
@@ -29,8 +30,8 @@ const AppBar = (props) => (
   </>
 );
 
-export default function TheHeader({setTheme, theme}) {
-  // const [dark, setDark] = useState(theme);
+export default function TheHeader() {
+  const {theme, toggleTheme} = useTheme();
   
   return (
     <>
@@ -51,7 +52,7 @@ export default function TheHeader({setTheme, theme}) {
         <Button
           a11yTitle={theme ? "Switch to Light Mode" : "Switch to Dark Mode"}
           icon={theme == "dark" ? <Moon /> : <Sun />}
-          onClick={() => setTheme(() => theme == "dark" ? "dark" : "light")}
+          onClick={() => toggleTheme(() => theme == "dark" ? "dark" : "light")}
           tip={{
             content: (
               <Box

@@ -1,8 +1,16 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
-export const Context = createContext();
+export const AppContext = createContext();
 
-const AppContext = ({children}) => {
+export const ThemeContext = createContext({
+	theme: "light",
+	toggleTheme: () => {},
+  });
+export const useTheme = () => useContext(ThemeContext);
+
+const AppProvider = ({children}) => {
+	const [theme, setTheme] = useState("");
+
 	const [lists, setLists] = useState([]);
 	const removeList = item => {
 		let newLists = [...lists];
@@ -14,14 +22,24 @@ const AppContext = ({children}) => {
 		setLists(newLists);
 	}
 
+	const toggleTheme =  (type) => {
+		setTheme(type == "dark" ? "dark" : "light");
+	}
+
 	return (
-    <Context.Provider value={{
+    <AppContext.Provider value={{
       lists,
       addToLists: (newItem) => setLists([...lists, newItem]),
-      deleteFromList: (item) => removeList(item)
+      deleteFromList: (item) => removeList(item),
+
+	  theme,
+	  toggleTheme
     }}>
-      {children}
-    </Context.Provider>
+		<ThemeContext.Provider>
+			{children}
+		</ThemeContext.Provider>
+    </AppContext.Provider>
   )
 }
-export default AppContext;
+
+export default AppProvider;
