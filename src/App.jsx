@@ -32,7 +32,7 @@ function MyApp() {
     
   return (
       <Grommet hpe={hpe} theme={generic} background="background-back" full themeMode={dark ? "dark" : "light"}>
-        <TheHeader theme={setDark}/>
+        <TheHeader setTheme={setDark} theme={dark}/>
         {/*<Header background="brand">
           <Button icon={<Icons.Home />} hoverIndicator />
           <Menu label="account" items={[{ label: 'logout' }]} />
@@ -75,14 +75,12 @@ function MyApp() {
               <Route path="/about" element={<About/>} />
               {/*<Route element={NotFound} />*/}
               {/*<Route path="*" element={NotFound}/>*/}
-              {/*<Route path='/' element={ <LoginPage/>}/>
-              
+              {/*
               <Route element={<ProtectedRoutes/>}>
               <Route path='/home' element={<HomePage/>}/>
               <Route path='/Posts/:PostID' element={<ViewSharedPost/>}/>
-              <Route path='/profile/:userID' element={<ProfilePage/>}/>
-              <Route path='/Message/:userId?' element={<Message/>}/>
-              <Route path='/Notifications' element={<Notifications/>}/>
+              <Route path='/message/:userId?' element={<Message/>}/>
+              <Route path='/notifications' element={<Notifications/>}/>
               <Route path='/verifyaccount' element={<Verify/>}/>*/}
               
             </Routes>

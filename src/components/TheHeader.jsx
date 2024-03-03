@@ -29,8 +29,8 @@ const AppBar = (props) => (
   </>
 );
 
-export default function TheHeader({theme}) {
-  const [dark, setDark] = useState(theme);
+export default function TheHeader({setTheme, theme}) {
+  // const [dark, setDark] = useState(theme);
   
   return (
     <>
@@ -49,17 +49,17 @@ export default function TheHeader({theme}) {
         </Nav>
         
         <Button
-          a11yTitle={dark ? "Switch to Light Mode" : "Switch to Dark Mode"}
-          icon={dark ? <Moon /> : <Sun />}
-          onClick={() => setDark(!dark)}
+          a11yTitle={theme ? "Switch to Light Mode" : "Switch to Dark Mode"}
+          icon={theme == "dark" ? <Moon /> : <Sun />}
+          onClick={() => setTheme(() => theme == "dark" ? "dark" : "light")}
           tip={{
             content: (
               <Box
                 pad="small"
                 round="small"
-                background={dark ? "dark-1" : "light-3"}
+                background={theme ? "dark-1" : "light-3"}
               >
-                {dark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+                {theme ? "Switch to Light Mode" : "Switch to Dark Mode"}
               </Box>
             ),
             plain: true,
