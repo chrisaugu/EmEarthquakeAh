@@ -8,9 +8,24 @@ export const ThemeContext = createContext({
   });
 export const useTheme = () => useContext(ThemeContext);
 
-const AppProvider = ({children}) => {
+const ThemeProvider = () => {
 	const [theme, setTheme] = useState("");
 
+	const toggleTheme =  (type) => {
+		setTheme(type == "dark" ? "dark" : "light");
+	}
+
+	return (
+		<ThemeContext.Provider value={{
+			theme,
+			toggleTheme
+		}}>
+			{children}
+		</ThemeContext.Provider>
+	)
+}
+
+const AppProvider = ({children}) => {
 	const [lists, setLists] = useState([]);
 	const removeList = item => {
 		let newLists = [...lists];
@@ -22,22 +37,13 @@ const AppProvider = ({children}) => {
 		setLists(newLists);
 	}
 
-	const toggleTheme =  (type) => {
-		setTheme(type == "dark" ? "dark" : "light");
-	}
-
 	return (
     <AppContext.Provider value={{
       lists,
       addToLists: (newItem) => setLists([...lists, newItem]),
       deleteFromList: (item) => removeList(item),
-
-	  theme,
-	  toggleTheme
     }}>
-		<ThemeContext.Provider>
-			{children}
-		</ThemeContext.Provider>
+		{children}
     </AppContext.Provider>
   )
 }

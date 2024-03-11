@@ -27,11 +27,11 @@ import About from "./pages/about";
 import { theme, hpeLeaflet, generic } from "./themes";
 
 function MyApp() {
-  const {theme} = useTheme();
+  // const {theme} = useTheme();
 
   return (
     <AppProvider>
-      <Grommet hpe={hpe} theme={generic} background="background-back" full themeMode={theme}>
+      <Grommet hpe={hpe} theme={generic} themeMode={theme} background="background-back" full>
         <TheHeader/>
         {/*<Header background="brand">
           <Button icon={<Icons.Home />} hoverIndicator />
