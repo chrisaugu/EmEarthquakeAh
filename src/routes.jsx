@@ -17,16 +17,10 @@ const Routes = () => (
 			<Route exact path="/" component={Home}/>
 			<Route path="/login" component={Login}/>
 			<Route path="*" component={NotFound}/>
-			<Redirect from="/old-match" to="/will-match" />
-			<Route path="/will-match" component={WillMatch} />
 			<Route component={NoMatch} />
 		</Switch>
 	</Router>
 );
-
-function WillMatch() {
-	return <h3>Matched!</h3>;
-}
 
 function NoMatch({ location }) {
   return (

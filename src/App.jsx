@@ -11,32 +11,33 @@ import { grommet, Grommet, Page, PageContent, PageHeader, Header, Main,
   Sidebar,
   Nav,
   Avatar,
+  Menu
 } from 'grommet';
 import * as Icons from "grommet-icons";
-import { hpe } from 'grommet-theme-hpe';
 
 import './App.css';
 import logo from "./assets/vercel.svg";
-import AppProvider, { AppContext, useTheme } from './libs/AppContext';
+import AppProvider, { useTheme } from './libs/AppContext';
 import CardTemplate from "./components/CardTemplate";
 import TheFooter from "./components/TheFooter";
 import TheHeader from "./components/TheHeader";
 import Home from "./pages/home";
 import About from "./pages/about";
+import NotFound from "./pages/notfound"
 
-import { theme, hpeLeaflet, generic } from "./themes";
+import { hpeLeaflet, generic, customTheme } from "./themes";
 
 function MyApp() {
-  // const {theme} = useTheme();
+  const {theme} = useTheme();
 
   return (
     <AppProvider>
-      <Grommet hpe={hpe} theme={generic} themeMode={theme} background="background-back" full>
+      <Grommet full hpe={hpeLeaflet} theme={customTheme} themeMode={theme} background="background-back">
         <TheHeader/>
-        {/*<Header background="brand">
+        {/* <Header background="brand">
           <Button icon={<Icons.Home />} hoverIndicator />
           <Menu label="account" items={[{ label: 'logout' }]} />
-        </Header>*/}
+        </Header> */}
         {/*<Grid columns="medium" gap="large" pad={{ bottom: "large" }}>
         <Grid
           rows={['xxsmall', 'xsmall']}
@@ -73,15 +74,8 @@ function MyApp() {
                 {loggedIn ? <Redirect to="/dashboard" /> : <PublicHomePage />}
               </Route>*/}
               <Route path="/about" element={<About/>} />
-              {/*<Route element={NotFound} />*/}
-              {/*<Route path="*" element={NotFound}/>*/}
-              {/*
-              <Route element={<ProtectedRoutes/>}>
-              <Route path='/home' element={<HomePage/>}/>
-              <Route path='/Posts/:PostID' element={<ViewSharedPost/>}/>
-              <Route path='/message/:userId?' element={<Message/>}/>
-              <Route path='/notifications' element={<Notifications/>}/>
-              <Route path='/verifyaccount' element={<Verify/>}/>*/}
+              <Route element={NotFound} />
+              {/*<Route element={<ProtectedRoutes/>}>*/}
               
             </Routes>
           {/*</Main>*/}

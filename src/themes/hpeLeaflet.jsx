@@ -6,6 +6,8 @@ import {
   StatusUnknownSmall,
 } from 'grommet-icons';
 
+import { hpe } from 'grommet-theme-hpe';
+
 const markerKinds = {
   default: {
     container: {

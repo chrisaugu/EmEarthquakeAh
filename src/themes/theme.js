@@ -1,7 +1,7 @@
 import { grommet } from 'grommet';
 import { deepMerge } from "grommet/utils";
 
-const theme = deepMerge(grommet, {
+export const theme = deepMerge(grommet, {
   "name": "my theme",
   "rounding": 0,
   "spacing": 24,
@@ -544,4 +544,26 @@ const theme = deepMerge(grommet, {
   "scale": 1
 });
 
-export { theme };
+export const customTheme = deepMerge(grommet, {
+  global: {
+    breakpoints: {
+      xsmall: {
+        value: 400
+      }
+    }
+  },
+  heading: {
+    extend: () => `margin-top: 12px; margin-bottom: 12px;`
+  },
+  paragraph: {
+    extend: () => `font-weight: 300; margin-top: 0;`,
+    xxlarge: {
+      size: "28px"
+    }
+  },
+  textInput: {
+    placeholder: {
+      extend: () => `color: #44444`
+    }
+  }
+});

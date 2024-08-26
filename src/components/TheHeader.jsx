@@ -1,11 +1,13 @@
 import {useState} from 'react';
 import {Link} from "react-router-dom";
-import {Header, Nav, Anchor, Text, Button, Box, Clock} from "grommet";
+import {Header, Nav, Anchor, Text, Button, Box, Clock, ResponsiveContext } from "grommet";
 import * as Icons from "grommet-icons";
 import { Sun, Moon } from "grommet-icons";
 
 import styles from "../styles/Home.module.css";
 import { useTheme } from '../libs/AppContext';
+
+// import Logo from "../assets/vercel.svg"
 
 const AppBar = (props) => (
   <>
@@ -52,7 +54,7 @@ export default function TheHeader() {
         <Button
           a11yTitle={theme ? "Switch to Light Mode" : "Switch to Dark Mode"}
           icon={theme == "dark" ? <Moon /> : <Sun />}
-          onClick={() => toggleTheme(() => theme == "dark" ? "dark" : "light")}
+          onClick={toggleTheme}
           tip={{
             content: (
               <Box
@@ -67,6 +69,30 @@ export default function TheHeader() {
           }}
         />
       </AppBar>
+
+      
+  {/* <ResponsiveContext.Consumer>
+    {size => (
+      <Box
+        direction="row"
+        justify="between"
+        alignSelf="center"
+        gap="medium"
+        pad={{ top: "large", horizontal: "xlarge" }}
+      >
+        <Anchor
+          href="/"
+          icon={<Moon />}
+          color="black"
+          label={
+            size !== "xsmall" &&
+            size !== "small" && <Text size="large">App Teaser</Text>
+          }
+        />
+        {/* <SocialMedia />
+      </Box>
+    )}
+  </ResponsiveContext.Consumer> */}
     </>
   )
 }

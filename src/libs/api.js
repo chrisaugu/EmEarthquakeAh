@@ -1,14 +1,13 @@
 import axios from 'axios';
-// import vercelFetch from '@vercel/fetch';
-// export default vercelFetch();
-import csv2json from "./Utils";
+import csv2json from "./utils";
 
 export const API_URL = "https://earthquake.usgs.gov/fdsnws/event/1/query";
 // https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&latitude=-5.2266836&longitude=145.3972343&maxradiuskm=1000
+
 const Axios = axios.create({
   "baseUrl": API_URL,
   "headers": {
-    // 'Content-Type': 'application/json',
+    'Content-Type': 'application/json',
   }
 });
 

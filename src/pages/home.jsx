@@ -1,43 +1,20 @@
 import {useState, useEffect} from "react";
 import {
-  Anchor,
-  Avatar,
   Box,
   Page,
-  Footer,
-  PageHeader,
   PageContent,
-  Main,
-  Grid,
   Heading,
-  Text,
-  Meter,
-  Nav,
-  Paragraph,
-  Button,
-  DropButton,
-  Toolbar,
-  TextInput,
   WorldMap,
   Data,
-  DataTable,
-  DataSort,
-  DataSearch,
-  DataTableGroupBy,
-  DataSummary,
-  DataView
+  DataTable
 } from "grommet";
 
-import { Github, Slack, Search, Filter } from "grommet-icons";
-import {Map, Marker} from "grommet-leaflet";
 import moment from 'moment';
 
-// import styles from '../styles/Home.module.css';
 
-import Api, {API_URL} from "../libs/Api.js";
-import csv2json from "../libs/Utils";
-import CardTemplate from "../components/CardTemplate";
-import SubscribeCard from "../components/SubscribeCard";
+import Api, {API_URL} from "../libs/api";
+import {csv2json, csvParser, csvToJson, csvToJsonParser, CSVToArray} from "../libs/utils";
+// import * as csvjson from "../libs/csvjson";
 
 export default function Home() {
   const [result, setResult] = useState([]);
@@ -61,10 +38,9 @@ export default function Home() {
         'maxradiuskm': 1000
       }
     })
-    .then((res) => {
-      let data = csv2json(res.data);
+    .then(async (res) => {
+      let data = await csvParser(res.data);
       setResult(data);
-      console.log(res);
       console.log(data)
     })
     .catch((error) => console.log(error));
@@ -90,7 +66,8 @@ export default function Home() {
             background="background-front"
             pad="medium"
             round="medium"
-            >
+            basis="small"
+          >
             <Heading level={2} margin="none">
               Map
             </Heading>
@@ -164,6 +141,10 @@ export default function Home() {
                     render: ({time}) => (
                       <span>{ moment(time, "YYYYMMDD").fromNow() }</span>
                     ),
+                  },
+                  {
+                    property: 'place',
+                    header: 'Place',
                   },
                   {
                     property: 'latitude',
