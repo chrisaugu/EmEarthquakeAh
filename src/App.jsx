@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import {Routes, Route, Link} from "react-router-dom";
-import { grommet, Grommet, Page, PageContent, PageHeader, Header, Main,
+import { 
+  grommet, Grommet, Page, PageContent, PageHeader, Header, Main,
   Text,
   Paragraph,
   Heading,
@@ -14,6 +15,7 @@ import { grommet, Grommet, Page, PageContent, PageHeader, Header, Main,
   Menu
 } from 'grommet';
 import * as Icons from "grommet-icons";
+import { hpe } from 'grommet-theme-hpe';
 
 import './App.css';
 import logo from "./assets/vercel.svg";
@@ -23,7 +25,7 @@ import TheFooter from "./components/TheFooter";
 import TheHeader from "./components/TheHeader";
 import Home from "./pages/home";
 import About from "./pages/about";
-import NotFound from "./pages/notfound"
+import NotFound from "./pages/notfound";
 
 import { hpeLeaflet, generic, customTheme } from "./themes";
 
@@ -32,7 +34,7 @@ function MyApp() {
 
   return (
     <AppProvider>
-      <Grommet full hpe={hpeLeaflet} theme={customTheme} themeMode={theme} background="background-back">
+      <Grommet full hpe={hpe} theme={customTheme} themeMode={theme} background="background-back">
         <TheHeader/>
         {/* <Header background="brand">
           <Button icon={<Icons.Home />} hoverIndicator />
@@ -67,18 +69,13 @@ function MyApp() {
             </Nav>
           </Sidebar>*/}
 
-          {/*<Main>*/}
+          {/* <Main> */}
             <Routes>
               <Route exact path="/" element={<Home/>} />
-              {/*<Route exact path="/">
-                {loggedIn ? <Redirect to="/dashboard" /> : <PublicHomePage />}
-              </Route>*/}
               <Route path="/about" element={<About/>} />
               <Route element={NotFound} />
-              {/*<Route element={<ProtectedRoutes/>}>*/}
-              
             </Routes>
-          {/*</Main>*/}
+          {/* </Main> */}
 
           <TheFooter/>
 

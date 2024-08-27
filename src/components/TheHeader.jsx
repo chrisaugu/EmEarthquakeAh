@@ -9,17 +9,19 @@ import { useTheme } from '../libs/AppContext';
 
 // import Logo from "../assets/vercel.svg"
 
-const AppBar = (props) => (
+const AppBar = ({props, children}) => (
   <>
     <Header
       background="background-front"
       border={{ color: 'border-weak', side: 'bottom' }}
       pad={{ horizontal: 'large', vertical: 'small' }}
-      sticky=""
-      elevation="medium"
+      sticky="scrollup"
+      elevation="small"
       {...props}
-    />
-    {/*<Box
+    >
+      {children}
+    </Header>
+    {/* <Box
       tag='header'
       direction='row'
       align='center'
@@ -28,7 +30,7 @@ const AppBar = (props) => (
       pad={{ left: "medium", right: "small", vertical: "small" }}
       elevation='medium'
       {...props}
-    />*/}
+    /> */}
   </>
 );
 
@@ -38,11 +40,10 @@ export default function TheHeader() {
   return (
     <>
       <AppBar>
-        {/*<Text size="large">My App</Text>*/}
-
+        {/* <Text size="large">Em Earthquake Ah?</Text> */}
         <Nav flex={true} direction="row" xjustify="center" gap="xxsmall" xbackground="brand" xpad="medium">
           <Anchor icon={<Icons.Home />} hoverIndicator href="/" />
-          {/*<Anchor icon={<Icons.ChatOption />} hoverIndicator href="/about" />*/}
+          {/* <Anchor icon={<Icons.ChatOption />} hoverIndicator href="/about" /> */}
           {/*<Clock type="digital" />*/}
 
           {/*<Button as={Link} label="Home" to="/" size="small" />*/}

@@ -8,8 +8,9 @@ import {
   Data,
   DataTable
 } from "grommet";
-
 import moment from 'moment';
+import { useDocumentTitle } from "@uidotdev/usehooks";
+import { Controls, Map, Marker, MarkerCluster } from 'grommet-leaflet';
 
 
 import Api, {API_URL} from "../libs/api";
@@ -18,6 +19,7 @@ import {csv2json, csvParser, csvToJson, csvToJsonParser, CSVToArray} from "../li
 
 export default function Home() {
   const [result, setResult] = useState([]);
+  useDocumentTitle("Home \/ Em Earthquake Ah?");
 
   async function getUser() {
     const gravatarLink = "//s.gravatar.com/avatar/b7fb138d53ba0f573212ccce38a7c43b?s=80";
@@ -28,6 +30,15 @@ export default function Home() {
       console.error(error);
     }
   }
+  
+  // get the user's location
+  // useEffect(() => {
+  //   userLocation().then(location => {
+  //     setGeolocation(location);
+  //     setLocations(generateLocations(50, { center: location, radius: 6 }));
+  //   });
+  // }, []);
+  
 
   useEffect(() => {
     Api.get(API_URL, {
@@ -49,7 +60,7 @@ export default function Home() {
   return (
     <>
       <Page pad="small">
-        <PageContent>
+        <PageContent flex>
           {/*<PageHeader 
             title="Welcome to Your App"
             subtitle="In this example, we showcase different levels of page headers 
@@ -60,7 +71,7 @@ export default function Home() {
           <Heading>Something</Heading>
           <Paragraph>Something about something</Paragraph>*/}
 
-          <Box
+          {/* <Box
             margin={{bottom: 'medium', top: 'medium'}}
             elevation='small'
             background="background-front"
@@ -72,7 +83,7 @@ export default function Home() {
               Map
             </Heading>
 
-            <WorldMap
+            {/* <WorldMap
               color="graph-0"
               // continents={[
               //   {
@@ -98,10 +109,11 @@ export default function Home() {
               selectColor="brand"
             />
 
-            {/*<Map>
+            {/* <Map>
               <Marker position={{ lat: 40.532, lng: -105.18 }} />
-            </Map>*/}
-          </Box>
+            </Map>
+            
+          </Box> */}
 
           <Box 
             margin={{bottom: 'medium'}}
@@ -110,7 +122,7 @@ export default function Home() {
             round="medium"
             elevation='small'>
               <Heading level={2} margin={{bottom: 'medium', top: 'none'}}>
-                Table
+                Recent Earthquakes in PNG
               </Heading>
           
             <Data 
@@ -146,18 +158,18 @@ export default function Home() {
                     property: 'place',
                     header: 'Place',
                   },
-                  {
-                    property: 'latitude',
-                    header: 'Latitude',
-                  },
-                  {
-                    property: 'longitude',
-                    header: 'Longitude',
-                  },
-                  {
-                    property: 'type',
-                    header: 'Type',
-                  },
+                  // {
+                  //   property: 'latitude',
+                  //   header: 'Latitude',
+                  // },
+                  // {
+                  //   property: 'longitude',
+                  //   header: 'Longitude',
+                  // },
+                  // {
+                  //   property: 'type',
+                  //   header: 'Type',
+                  // },
                   {
                     property: 'mag',
                     header: 'Magnitude',

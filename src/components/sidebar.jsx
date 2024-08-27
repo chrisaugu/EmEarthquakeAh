@@ -13,7 +13,7 @@ import {
   StatusInfoSmall,
 } from 'grommet-icons';
 
-import { Sidebar } from '../Sidebar';
+// import { Sidebar } from '../Sidebar';
 
 const src = '//s.gravatar.com/avatar/b7fb138d53ba0f573212ccce38a7c43b?s=80';
 
